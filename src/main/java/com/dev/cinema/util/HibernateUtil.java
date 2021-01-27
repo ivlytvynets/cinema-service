@@ -1,6 +1,6 @@
 package com.dev.cinema.util;
 
-import com.dev.cinema.exception.SessionException;
+import com.dev.cinema.exception.SessionFactoryInitializationException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -14,7 +14,7 @@ public class HibernateUtil {
         try {
             return new Configuration().configure().buildSessionFactory();
         } catch (Exception e) {
-            throw new SessionException("Error creating Session Factory", e);
+            throw new SessionFactoryInitializationException("Error creating Session Factory", e);
         }
     }
 
