@@ -7,6 +7,7 @@ import com.dev.cinema.model.Order;
 import com.dev.cinema.model.ShoppingCart;
 import com.dev.cinema.model.User;
 import com.dev.cinema.service.OrderService;
+import com.dev.cinema.service.ShoppingCartService;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     @Inject
     private OrderDao orderDao;
+    @Inject
+    private ShoppingCartService shoppingCartService;
 
     @Override
     public Order completeOrder(ShoppingCart shoppingCart) {
@@ -22,6 +25,7 @@ public class OrderServiceImpl implements OrderService {
         order.setUser(shoppingCart.getUser());
         order.setTickets(shoppingCart.getTickets());
         orderDao.add(order);
+        shoppingCartService.clear(shoppingCart);
         return order;
     }
 

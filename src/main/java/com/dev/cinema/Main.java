@@ -85,10 +85,6 @@ public class Main {
         orderService.completeOrder(shoppingCartService.getByUser(bohdan));
         orderService.completeOrder(shoppingCartService.getByUser(masha));
         System.out.println("--------------");
-        shoppingCartService.clear(shoppingCartService.getByUser(ivan));
-        shoppingCartService.clear(shoppingCartService.getByUser(bohdan));
-        shoppingCartService.clear(shoppingCartService.getByUser(masha));
-        System.out.println("--------------");
         shoppingCartService.addSession(movieSessionSecond, ivan);
         orderService.completeOrder(shoppingCartService.getByUser(ivan));
         shoppingCartService.addSession(movieSessionSecond, bohdan);
