@@ -10,6 +10,7 @@ import com.dev.cinema.security.AuthenticationService;
 import com.dev.cinema.service.CinemaHallService;
 import com.dev.cinema.service.MovieService;
 import com.dev.cinema.service.MovieSessionService;
+import com.dev.cinema.service.OrderService;
 import com.dev.cinema.service.ShoppingCartService;
 import java.time.LocalDateTime;
 
@@ -78,14 +79,25 @@ public class Main {
         shoppingCartService.addSession(movieSessionFirst, masha);
         shoppingCartService.addSession(movieSessionSecond, masha);
         shoppingCartService.addSession(movieSessionSecond, bohdan);
-        System.out.println(shoppingCartService.getByUser(ivan));
+
+        OrderService orderService = (OrderService) injector.getInstance(OrderService.class);
+        orderService.completeOrder(shoppingCartService.getByUser(ivan));
+        orderService.completeOrder(shoppingCartService.getByUser(bohdan));
+        orderService.completeOrder(shoppingCartService.getByUser(masha));
+        System.out.println("--------------");
         shoppingCartService.clear(shoppingCartService.getByUser(ivan));
-        System.out.println(shoppingCartService.getByUser(masha));
-        shoppingCartService.clear(shoppingCartService.getByUser(masha));
-        System.out.println(shoppingCartService.getByUser(bohdan));
         shoppingCartService.clear(shoppingCartService.getByUser(bohdan));
-        System.out.println(shoppingCartService.getByUser(ivan));
-        System.out.println(shoppingCartService.getByUser(masha));
-        System.out.println(shoppingCartService.getByUser(bohdan));
+        shoppingCartService.clear(shoppingCartService.getByUser(masha));
+        System.out.println("--------------");
+        shoppingCartService.addSession(movieSessionSecond, ivan);
+        orderService.completeOrder(shoppingCartService.getByUser(ivan));
+        shoppingCartService.addSession(movieSessionSecond, bohdan);
+        orderService.completeOrder(shoppingCartService.getByUser(bohdan));
+        shoppingCartService.addSession(movieSessionSecond, masha);
+        orderService.completeOrder(shoppingCartService.getByUser(masha));
+        System.out.println("--------------");
+        System.out.println(orderService.getOrdersHistory(ivan));
+        System.out.println(orderService.getOrdersHistory(bohdan));
+        System.out.println(orderService.getOrdersHistory(masha));
     }
 }
