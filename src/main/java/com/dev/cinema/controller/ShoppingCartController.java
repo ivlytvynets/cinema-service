@@ -1,6 +1,5 @@
 package com.dev.cinema.controller;
 
-import com.dev.cinema.exception.DataProcessingException;
 import com.dev.cinema.model.MovieSession;
 import com.dev.cinema.model.ShoppingCart;
 import com.dev.cinema.model.User;
@@ -35,17 +34,15 @@ public class ShoppingCartController {
 
     @PostMapping("/movie-sessions")
     public void addMovieSession(@RequestParam Long userId, @RequestParam Long movieSessionId) {
-        MovieSession movieSession = movieSessionService.get(movieSessionId).orElseThrow(() ->
-                new DataProcessingException("Can't get movie session with id: " + movieSessionId));
-        User user = userService.get(userId).orElseThrow(() ->
-                new DataProcessingException("Can't get user with id: " + userId));
+        MovieSession movieSession = movieSessionService.get(movieSessionId);
+        User user = userService.get(userId);
+        shoppingCartService.addSession(movieSession, user);
     }
 
     @GetMapping("/by-user")
     public ShoppingCartResponseDto getByUser(@RequestParam Long userId) {
         ShoppingCart shoppingCart = shoppingCartService
-                .getByUser(userService.get(userId).orElseThrow(() ->
-                new DataProcessingException("Can't get user with id: " + userId)));
+                .getByUser(userService.get(userId));
         return shoppingCartMapper.getResponseDto(shoppingCart);
     }
 }

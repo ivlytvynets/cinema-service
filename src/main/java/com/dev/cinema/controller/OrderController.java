@@ -1,6 +1,5 @@
 package com.dev.cinema.controller;
 
-import com.dev.cinema.exception.DataProcessingException;
 import com.dev.cinema.model.Order;
 import com.dev.cinema.model.ShoppingCart;
 import com.dev.cinema.model.dto.OrderResponseDto;
@@ -34,16 +33,13 @@ public class OrderController {
 
     @PostMapping("/complete")
     public void complete(@RequestParam Long userId) {
-        ShoppingCart shoppingCart = shoppingCartService.getByUser(userService.get(userId)
-                .orElseThrow(() -> new DataProcessingException("Can't get user with id: "
-                        + userId)));
+        ShoppingCart shoppingCart = shoppingCartService.getByUser(userService.get(userId));
         orderService.completeOrder(shoppingCart);
     }
 
     @GetMapping
     public List<OrderResponseDto> get(@RequestParam Long userId) {
-        List<Order> orders = orderService.getOrdersHistory(userService.get(userId).orElseThrow(
-                () -> new DataProcessingException("Can't get user with id: " + userId)));
+        List<Order> orders = orderService.getOrdersHistory(userService.get(userId));
         return orders
                 .stream()
                 .map(orderMapper::getResponseDto)
