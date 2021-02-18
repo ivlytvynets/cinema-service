@@ -14,9 +14,7 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PasswordValidator {
-    String fieldMatch();
     String message();
-    String field();
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

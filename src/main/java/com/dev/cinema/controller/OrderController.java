@@ -34,13 +34,13 @@ public class OrderController {
     @PostMapping("/complete")
     public void complete(Authentication authentication) {
         User user = userService.findByEmail(authentication.getName()).get();
-        orderService.completeOrder(shoppingCartService.getByUser(userService.get(user.getId())));
+        orderService.completeOrder(shoppingCartService.getByUser(user));
     }
 
     @GetMapping
     public List<OrderResponseDto> get(Authentication authentication) {
         User user = userService.findByEmail(authentication.getName()).get();
-        List<Order> orders = orderService.getOrdersHistory(userService.get(user.getId()));
+        List<Order> orders = orderService.getOrdersHistory(user);
         return orders
                 .stream()
                 .map(orderMapper::getResponseDto)

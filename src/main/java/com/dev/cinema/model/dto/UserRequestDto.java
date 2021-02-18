@@ -5,9 +5,7 @@ import com.dev.cinema.lib.PasswordValidator;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-@PasswordValidator(field = "password",
-        fieldMatch = "repeatPassword",
-        message = "Passwords are different")
+@PasswordValidator(message = "Passwords are different")
 public class UserRequestDto {
     @EmailValidator
     private String email;
