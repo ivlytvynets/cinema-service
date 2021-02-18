@@ -19,9 +19,4 @@ public @interface PasswordValidator {
     String field();
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
-    @Target({ ElementType.TYPE })
-    @Retention(RetentionPolicy.RUNTIME)
-    @interface List {
-        PasswordValidator[] value();
-    }
 }
