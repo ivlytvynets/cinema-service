@@ -8,17 +8,14 @@ import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
 
-    public CustomUserDetailsService(UserService userService, PasswordEncoder passwordEncoder) {
+    public CustomUserDetailsService(UserService userService) {
         this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -26,8 +23,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = userService.findByEmail(username).orElseThrow(
                 () -> new UsernameNotFoundException("User not found."));
         UserBuilder userBuilder = withUsername(username);
-        userBuilder.password(passwordEncoder.encode(user.getPassword()));
-        userBuilder.roles(user.getRole().getRoleName());
+        userBuilder.password(user.getPassword());
+        userBuilder.roles(user.getRoles().toString());
         return userBuilder.build();
     }
 }
