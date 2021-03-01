@@ -26,7 +26,7 @@ public class Ticket {
         this.id = id;
     }
 
-    public PerformanceSession getMovieSession() {
+    public PerformanceSession getPerformanceSession() {
         return performanceSession;
     }
 
