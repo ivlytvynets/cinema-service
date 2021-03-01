@@ -28,6 +28,6 @@ public class PerformanceServiceImpl implements PerformanceService {
     @Override
     public Performance get(Long id) {
         return performanceDao.get(id).orElseThrow(
-                () -> new DataProcessingException("Can't get movie with id: " + id));
+                () -> new DataProcessingException("Can't get performance with id: " + id));
     }
 }

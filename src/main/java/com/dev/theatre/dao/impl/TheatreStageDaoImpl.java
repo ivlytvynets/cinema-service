@@ -55,7 +55,7 @@ public class TheatreStageDaoImpl implements TheatreStageDao {
     @Override
     public Optional<TheatreStage> get(Long id) {
         try (Session session = sessionFactory.openSession()) {
-            return Optional.ofNullable(session.load(TheatreStage.class, id));
+            return Optional.ofNullable(session.get(TheatreStage.class, id));
         } catch (Exception e) {
             throw new DataProcessingException("Can't get theatre hall with id: " + id);
         }

@@ -23,11 +23,13 @@ public class PerformanceSessionMapperImpl implements PerformanceSessionMapper {
     public PerformanceSessionResponseDto getResponseDto(PerformanceSession performanceSession) {
         PerformanceSessionResponseDto performanceSessionResponseDto =
                 new PerformanceSessionResponseDto();
-        performanceSessionResponseDto.setMovieSessionId(performanceSession.getId());
+        performanceSessionResponseDto.setPerformanceSessionId(performanceSession.getId());
         performanceSessionResponseDto.setShowTime(performanceSession.getShowTime());
-        performanceSessionResponseDto.setMovieId(performanceSession.getPerformance().getId());
-        performanceSessionResponseDto.setMovieTitle(performanceSession.getPerformance().getTitle());
-        performanceSessionResponseDto.setCinemaHallId(performanceSession.getTheatreStage().getId());
+        performanceSessionResponseDto.setPerformanceId(performanceSession.getPerformance().getId());
+        performanceSessionResponseDto.setPerformanceTitle(performanceSession.getPerformance()
+                .getTitle());
+        performanceSessionResponseDto.setTheatreStageId(performanceSession.getTheatreStage()
+                .getId());
         return performanceSessionResponseDto;
     }
 
