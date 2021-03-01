@@ -15,8 +15,8 @@ Communication between back-end and front-end is performed via DTO and JSON.
 ### User
 * Register in the system
 * Log in to the system
-* Browse available topics
-* Browse available intensive courses
+* Browse available intensive performances
+* Browse available performance sessions
 * Add multiple tickets to the shopping cart
 * Place an order
 
@@ -49,3 +49,4 @@ Communication between back-end and front-end is performed via DTO and JSON.
 * password: "your password"
 * db.url=jdbc:mysql://localhost/*<your_database>*?currentSchema=*<your_schema>*
 5. Run a project using the IDE
+6. If you want to log in as ADMIN, enter, please, this email: "admin@gmail.com" and this password: "1234"

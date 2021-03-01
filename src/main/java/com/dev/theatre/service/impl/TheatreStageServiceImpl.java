@@ -28,6 +28,6 @@ public class TheatreStageServiceImpl implements TheatreStageService {
     @Override
     public TheatreStage get(Long id) {
         return theatreStageDao.get(id).orElseThrow(
-                () -> new DataProcessingException("Can't get theatre hall with id: " + id));
+                () -> new DataProcessingException("Can't get theatre stage with id: " + id));
     }
 }

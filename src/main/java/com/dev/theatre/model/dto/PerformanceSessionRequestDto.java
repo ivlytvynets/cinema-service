@@ -7,19 +7,19 @@ public class PerformanceSessionRequestDto {
     @NotNull
     private LocalDateTime showTime;
     @NotNull
-    private Long movieId;
+    private Long performanceId;
     @NotNull
-    private Long cinemaHallId;
+    private Long theatreStageId;
 
-    public Long getMovieId() {
-        return movieId;
+    public Long getPerformanceId() {
+        return performanceId;
     }
 
     public LocalDateTime getShowTime() {
         return showTime;
     }
 
-    public Long getCinemaHallId() {
-        return cinemaHallId;
+    public Long getTheatreStageId() {
+        return theatreStageId;
     }
 }

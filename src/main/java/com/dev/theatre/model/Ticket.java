@@ -30,7 +30,7 @@ public class Ticket {
         return performanceSession;
     }
 
-    public void setMovieSession(PerformanceSession performanceSession) {
+    public void setPerformanceSession(PerformanceSession performanceSession) {
         this.performanceSession = performanceSession;
     }
 

@@ -34,7 +34,7 @@ public class PerformanceSessionServiceImpl implements PerformanceSessionService 
     @Override
     public PerformanceSession get(Long id) {
         return performanceSessionDao.get(id).orElseThrow(() ->
-                new DataProcessingException("Can't get movie session with id: " + id));
+                new DataProcessingException("Can't get performance session with id: " + id));
     }
 
     @Override

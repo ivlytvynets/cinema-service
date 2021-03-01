@@ -39,19 +39,19 @@ public class PerformanceSession {
         this.showTime = showTime;
     }
 
-    public Performance getMovie() {
+    public Performance getPerformance() {
         return performance;
     }
 
-    public void setMovie(Performance performance) {
+    public void setPerformance(Performance performance) {
         this.performance = performance;
     }
 
-    public TheatreStage getCinemaHall() {
+    public TheatreStage getTheatreStage() {
         return theatreStage;
     }
 
-    public void setCinemaHall(TheatreStage theatreStage) {
+    public void setTheatreStage(TheatreStage theatreStage) {
         this.theatreStage = theatreStage;
     }
 

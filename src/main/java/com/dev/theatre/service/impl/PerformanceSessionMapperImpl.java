@@ -25,19 +25,19 @@ public class PerformanceSessionMapperImpl implements PerformanceSessionMapper {
                 new PerformanceSessionResponseDto();
         performanceSessionResponseDto.setMovieSessionId(performanceSession.getId());
         performanceSessionResponseDto.setShowTime(performanceSession.getShowTime());
-        performanceSessionResponseDto.setMovieId(performanceSession.getMovie().getId());
-        performanceSessionResponseDto.setMovieTitle(performanceSession.getMovie().getTitle());
-        performanceSessionResponseDto.setCinemaHallId(performanceSession.getCinemaHall().getId());
+        performanceSessionResponseDto.setMovieId(performanceSession.getPerformance().getId());
+        performanceSessionResponseDto.setMovieTitle(performanceSession.getPerformance().getTitle());
+        performanceSessionResponseDto.setCinemaHallId(performanceSession.getTheatreStage().getId());
         return performanceSessionResponseDto;
     }
 
     @Override
     public PerformanceSession getEntity(PerformanceSessionRequestDto performanceSessionRequestDto) {
         PerformanceSession performanceSession = new PerformanceSession();
-        performanceSession.setMovie(performanceService.get(performanceSessionRequestDto
-                .getMovieId()));
-        performanceSession.setCinemaHall(theatreStageService.get(performanceSessionRequestDto
-                .getCinemaHallId()));
+        performanceSession.setPerformance(performanceService.get(performanceSessionRequestDto
+                .getPerformanceId()));
+        performanceSession.setTheatreStage(theatreStageService.get(performanceSessionRequestDto
+                .getTheatreStageId()));
         performanceSession.setShowTime(performanceSessionRequestDto.getShowTime());
         return performanceSession;
     }
